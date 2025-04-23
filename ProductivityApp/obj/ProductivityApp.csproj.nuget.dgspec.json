@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leute\\Desktop\\IMP\\SCH\\THE PRESENT\\ISCS 30.50\\ProductivityApp\\ProductivityApp.csproj": {}
+    "C:\\Users\\leute\\Documents\\GitHub\\Burnt-Loaf-Productivity-App\\ProductivityApp\\ProductivityApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leute\\Desktop\\IMP\\SCH\\THE PRESENT\\ISCS 30.50\\ProductivityApp\\ProductivityApp.csproj": {
+    "C:\\Users\\leute\\Documents\\GitHub\\Burnt-Loaf-Productivity-App\\ProductivityApp\\ProductivityApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leute\\Desktop\\IMP\\SCH\\THE PRESENT\\ISCS 30.50\\ProductivityApp\\ProductivityApp.csproj",
+        "projectUniqueName": "C:\\Users\\leute\\Documents\\GitHub\\Burnt-Loaf-Productivity-App\\ProductivityApp\\ProductivityApp.csproj",
         "projectName": "ProductivityApp",
-        "projectPath": "C:\\Users\\leute\\Desktop\\IMP\\SCH\\THE PRESENT\\ISCS 30.50\\ProductivityApp\\ProductivityApp.csproj",
+        "projectPath": "C:\\Users\\leute\\Documents\\GitHub\\Burnt-Loaf-Productivity-App\\ProductivityApp\\ProductivityApp.csproj",
         "packagesPath": "C:\\Users\\leute\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leute\\Desktop\\IMP\\SCH\\THE PRESENT\\ISCS 30.50\\ProductivityApp\\obj\\",
+        "outputPath": "C:\\Users\\leute\\Documents\\GitHub\\Burnt-Loaf-Productivity-App\\ProductivityApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
