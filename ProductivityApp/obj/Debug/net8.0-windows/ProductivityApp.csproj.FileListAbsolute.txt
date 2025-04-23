@@ -14,3 +14,20 @@ C:\Users\leute\Desktop\IMP\SCH\THE PRESENT\ISCS 30.50\ProductivityApp\obj\Debug\
 C:\Users\leute\Desktop\IMP\SCH\THE PRESENT\ISCS 30.50\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.pdb
 C:\Users\leute\Desktop\IMP\SCH\THE PRESENT\ISCS 30.50\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.genruntimeconfig.cache
 C:\Users\leute\Desktop\IMP\SCH\THE PRESENT\ISCS 30.50\ProductivityApp\obj\Debug\net8.0-windows\ref\ProductivityApp.dll
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\bin\Debug\net8.0-windows\ProductivityApp.exe
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\bin\Debug\net8.0-windows\ProductivityApp.deps.json
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\bin\Debug\net8.0-windows\ProductivityApp.runtimeconfig.json
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\bin\Debug\net8.0-windows\ProductivityApp.dll
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\bin\Debug\net8.0-windows\ProductivityApp.pdb
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.ProductivityApp.resources
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.csproj.GenerateResource.cache
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.AssemblyInfoInputs.cache
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.AssemblyInfo.cs
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.csproj.CoreCompileInputs.cache
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.sourcelink.json
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.dll
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\refint\ProductivityApp.dll
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.pdb
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ProductivityApp.genruntimeconfig.cache
+C:\Users\leute\Documents\GitHub\Burnt-Loaf-Productivity-App\ProductivityApp\obj\Debug\net8.0-windows\ref\ProductivityApp.dll

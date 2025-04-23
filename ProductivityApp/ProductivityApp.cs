@@ -25,6 +25,7 @@ namespace ProductivityApp
         }
         private void Timer_Tick(object? sender, EventArgs e)
         {
+
             if (timeLeft.TotalSeconds > 0)
             {
                 timeLeft = timeLeft.Subtract(TimeSpan.FromSeconds(1));
@@ -39,20 +40,26 @@ namespace ProductivityApp
                 {
                     sessionCount++;
                     lblSessions.Text = $"Sessions: {sessionCount}";
-                    if (sessionCount % 4 == 0)
+
+                    if (sessionCount % (int)numCycles.Value == 0)
+                    {
                         timeLeft = TimeSpan.FromMinutes((double)numLongBreak.Value);
+                        lblStatus.Text = "Long Break";
+                    }
                     else
+                    {
                         timeLeft = TimeSpan.FromMinutes((double)numShortBreak.Value);
+                        lblStatus.Text = "Short Break";
+                    }
+
+                    isWorkSession = false;
                 }
                 else
                 {
                     timeLeft = TimeSpan.FromMinutes((double)numWork.Value);
+                    isWorkSession = true;
+                    lblStatus.Text = "Work";
                 }
-
-                isWorkSession = !isWorkSession;
-                lblStatus.Text = isWorkSession ? "Work" : "Break";
-                lblTime.Text = timeLeft.ToString("mm\\:ss");
-                timer.Start();
             }
         }
         private void btnStart_Click(object sender, EventArgs e)
