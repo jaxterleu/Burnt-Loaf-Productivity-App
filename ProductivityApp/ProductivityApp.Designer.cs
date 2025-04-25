@@ -388,7 +388,7 @@
             pnlTaskCreate.Controls.Add(tbxTaskName);
             pnlTaskCreate.Controls.Add(lblTaskName);
             pnlTaskCreate.Controls.Add(lblCreateLabel);
-            pnlTaskCreate.Location = new Point(339, 6);
+            pnlTaskCreate.Location = new Point(898, 521);
             pnlTaskCreate.Name = "pnlTaskCreate";
             pnlTaskCreate.Size = new Size(572, 591);
             pnlTaskCreate.TabIndex = 27;

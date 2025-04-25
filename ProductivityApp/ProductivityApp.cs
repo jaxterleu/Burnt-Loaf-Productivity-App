@@ -103,6 +103,8 @@ namespace ProductivityApp
             pnlTaskList.Location = new Point(339, 6);
             pnlChoose.Location = new Point(339, 6);
             pnlChoose.Visible = false;
+            pnlTaskCreate.Location = new Point(339, 6);
+            pnlTaskCreate.Visible = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
