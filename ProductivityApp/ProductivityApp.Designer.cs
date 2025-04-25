@@ -45,13 +45,13 @@
             lblTaskList = new Label();
             clbTaskList = new CheckedListBox();
             lblFinTasks = new Label();
-            lbxFinTasks = new ListBox();
             btnAdd = new Button();
             btnEdit = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
             btnRemove = new Button();
             btnFinish = new Button();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)numWork).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numShortBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLongBreak).BeginInit();
@@ -213,7 +213,7 @@
             clbTaskList.FormattingEnabled = true;
             clbTaskList.Location = new Point(343, 32);
             clbTaskList.Name = "clbTaskList";
-            clbTaskList.Size = new Size(291, 466);
+            clbTaskList.Size = new Size(291, 488);
             clbTaskList.TabIndex = 15;
             // 
             // lblFinTasks
@@ -225,17 +225,9 @@
             lblFinTasks.TabIndex = 16;
             lblFinTasks.Text = "Finished Tasks:";
             // 
-            // lbxFinTasks
-            // 
-            lbxFinTasks.FormattingEnabled = true;
-            lbxFinTasks.Location = new Point(657, 32);
-            lbxFinTasks.Name = "lbxFinTasks";
-            lbxFinTasks.Size = new Size(245, 470);
-            lbxFinTasks.TabIndex = 17;
-            // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(343, 513);
+            btnAdd.Location = new Point(343, 527);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
             btnAdd.TabIndex = 18;
@@ -244,7 +236,7 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(443, 513);
+            btnEdit.Location = new Point(443, 527);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(94, 29);
             btnEdit.TabIndex = 19;
@@ -253,7 +245,7 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(543, 513);
+            btnDelete.Location = new Point(543, 527);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 20;
@@ -262,7 +254,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(657, 515);
+            btnUpdate.Location = new Point(662, 527);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(117, 29);
             btnUpdate.TabIndex = 21;
@@ -271,7 +263,7 @@
             // 
             // btnRemove
             // 
-            btnRemove.Location = new Point(785, 515);
+            btnRemove.Location = new Point(785, 527);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(117, 29);
             btnRemove.TabIndex = 22;
@@ -280,25 +272,34 @@
             // 
             // btnFinish
             // 
-            btnFinish.Location = new Point(338, 550);
+            btnFinish.Location = new Point(338, 562);
             btnFinish.Name = "btnFinish";
             btnFinish.Size = new Size(564, 29);
             btnFinish.TabIndex = 23;
             btnFinish.Text = "Finish Session";
             btnFinish.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(662, 32);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(240, 488);
+            textBox1.TabIndex = 24;
+            // 
             // ProductivityApp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(textBox1);
             Controls.Add(btnFinish);
             Controls.Add(btnRemove);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnEdit);
             Controls.Add(btnAdd);
-            Controls.Add(lbxFinTasks);
             Controls.Add(lblFinTasks);
             Controls.Add(clbTaskList);
             Controls.Add(lblTaskList);
@@ -346,12 +347,12 @@
         private Label lblTaskList;
         private CheckedListBox clbTaskList;
         private Label lblFinTasks;
-        private ListBox lbxFinTasks;
         private Button btnAdd;
         private Button btnEdit;
         private Button btnDelete;
         private Button btnUpdate;
         private Button btnRemove;
         private Button btnFinish;
+        private TextBox textBox1;
     }
 }
