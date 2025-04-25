@@ -8,10 +8,16 @@ namespace ProductivityApp
 {
     public partial class ProductivityApp : Form
     {
+        //Timer Stuff
         private Timer? timer;
         private TimeSpan timeLeft;
         private int sessionCount = 0;
         private bool isWorkSession = true;
+
+        //Task List Stuff
+        int AddEditDelete = 0;
+        int MainSub = 0;
+
         public ProductivityApp()
         {
             InitializeComponent();
@@ -89,6 +95,77 @@ namespace ProductivityApp
             lblStatus.Text = "Idle";
             sessionCount = 0;
             lblSessions.Text = "Sessions: 0";
+        }
+
+        private void ProductivityApp_Load(object sender, EventArgs e)
+        {
+            //Setting up the panels
+            pnlTaskList.Location = new Point(339, 6);
+            pnlChoose.Location = new Point(339, 6);
+            pnlChoose.Visible = false;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            pnlTaskList.Visible = false;
+            pnlChoose.Visible = true;
+            lblMainSub.Text = "Which would you like to add?";
+
+            //AddEditDelete 0 = Add
+            AddEditDelete = 0;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            pnlTaskList.Visible = false;
+            pnlChoose.Visible = true;
+            lblMainSub.Text = "Which would you like to edit?";
+
+            //AddEditDelete 1 = Edit
+            AddEditDelete = 1;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            pnlTaskList.Visible = false;
+            pnlChoose.Visible = true;
+            lblMainSub.Text = "Which would you like to remove?";
+
+            //AddEditDelete 2 = Delete
+            AddEditDelete = 2;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFinish_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+            //MainSub 0 = Main
+            MainSub = 0;
+        }
+
+        private void btnSub_Click(object sender, EventArgs e)
+        {
+            //MainSub 1 = Sub
+            MainSub = 1;
+        }
+
+        private void btnCanChoose_Click(object sender, EventArgs e)
+        {
+            pnlTaskList.Visible = true;
+            pnlChoose.Visible = false;
         }
     }
 }

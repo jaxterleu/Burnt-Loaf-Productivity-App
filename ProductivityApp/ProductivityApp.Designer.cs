@@ -51,11 +51,26 @@
             btnUpdate = new Button();
             btnRemove = new Button();
             btnFinish = new Button();
-            textBox1 = new TextBox();
+            tbxFinTasks = new TextBox();
+            pnlTaskList = new Panel();
+            pnlChoose = new Panel();
+            btnCanChoose = new Button();
+            btnSub = new Button();
+            btnMain = new Button();
+            lblMainSub = new Label();
+            pnlTaskCreate = new Panel();
+            lblCreateLabel = new Label();
+            lblTaskName = new Label();
+            tbxTaskName = new TextBox();
+            btnCreateDo = new Button();
+            btnCreateCan = new Button();
             ((System.ComponentModel.ISupportInitialize)numWork).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numShortBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLongBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCycles).BeginInit();
+            pnlTaskList.SuspendLayout();
+            pnlChoose.SuspendLayout();
+            pnlTaskCreate.SuspendLayout();
             SuspendLayout();
             // 
             // lblTime
@@ -202,7 +217,7 @@
             // lblTaskList
             // 
             lblTaskList.AutoSize = true;
-            lblTaskList.Location = new Point(343, 9);
+            lblTaskList.Location = new Point(4, 3);
             lblTaskList.Name = "lblTaskList";
             lblTaskList.Size = new Size(71, 20);
             lblTaskList.TabIndex = 14;
@@ -211,7 +226,7 @@
             // clbTaskList
             // 
             clbTaskList.FormattingEnabled = true;
-            clbTaskList.Location = new Point(343, 32);
+            clbTaskList.Location = new Point(7, 26);
             clbTaskList.Name = "clbTaskList";
             clbTaskList.Size = new Size(291, 488);
             clbTaskList.TabIndex = 15;
@@ -219,7 +234,7 @@
             // lblFinTasks
             // 
             lblFinTasks.AutoSize = true;
-            lblFinTasks.Location = new Point(657, 9);
+            lblFinTasks.Location = new Point(323, 3);
             lblFinTasks.Name = "lblFinTasks";
             lblFinTasks.Size = new Size(103, 20);
             lblFinTasks.TabIndex = 16;
@@ -227,82 +242,203 @@
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(343, 527);
+            btnAdd.Location = new Point(7, 520);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
             btnAdd.TabIndex = 18;
             btnAdd.Text = "Add New";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(443, 527);
+            btnEdit.Location = new Point(105, 520);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(94, 29);
             btnEdit.TabIndex = 19;
             btnEdit.Text = "Edit Task";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(543, 527);
+            btnDelete.Location = new Point(204, 520);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(94, 29);
             btnDelete.TabIndex = 20;
             btnDelete.Text = "Delete Task";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(662, 527);
+            btnUpdate.Location = new Point(323, 520);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(117, 29);
             btnUpdate.TabIndex = 21;
             btnUpdate.Text = "Update List";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnRemove
             // 
-            btnRemove.Location = new Point(785, 527);
+            btnRemove.Location = new Point(446, 520);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(117, 29);
             btnRemove.TabIndex = 22;
             btnRemove.Text = "Remove Task";
             btnRemove.UseVisualStyleBackColor = true;
+            btnRemove.Click += btnRemove_Click;
             // 
             // btnFinish
             // 
-            btnFinish.Location = new Point(338, 562);
+            btnFinish.Location = new Point(7, 555);
             btnFinish.Name = "btnFinish";
-            btnFinish.Size = new Size(564, 29);
+            btnFinish.Size = new Size(556, 29);
             btnFinish.TabIndex = 23;
             btnFinish.Text = "Finish Session";
             btnFinish.UseVisualStyleBackColor = true;
+            btnFinish.Click += btnFinish_Click;
             // 
-            // textBox1
+            // tbxFinTasks
             // 
-            textBox1.Location = new Point(662, 32);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(240, 488);
-            textBox1.TabIndex = 24;
+            tbxFinTasks.Location = new Point(323, 26);
+            tbxFinTasks.Multiline = true;
+            tbxFinTasks.Name = "tbxFinTasks";
+            tbxFinTasks.ReadOnly = true;
+            tbxFinTasks.Size = new Size(240, 488);
+            tbxFinTasks.TabIndex = 24;
+            // 
+            // pnlTaskList
+            // 
+            pnlTaskList.Controls.Add(btnFinish);
+            pnlTaskList.Controls.Add(tbxFinTasks);
+            pnlTaskList.Controls.Add(btnRemove);
+            pnlTaskList.Controls.Add(lblFinTasks);
+            pnlTaskList.Controls.Add(btnUpdate);
+            pnlTaskList.Controls.Add(lblTaskList);
+            pnlTaskList.Controls.Add(btnDelete);
+            pnlTaskList.Controls.Add(clbTaskList);
+            pnlTaskList.Controls.Add(btnEdit);
+            pnlTaskList.Controls.Add(btnAdd);
+            pnlTaskList.Location = new Point(891, 588);
+            pnlTaskList.Name = "pnlTaskList";
+            pnlTaskList.Size = new Size(572, 591);
+            pnlTaskList.TabIndex = 25;
+            // 
+            // pnlChoose
+            // 
+            pnlChoose.Controls.Add(btnCanChoose);
+            pnlChoose.Controls.Add(btnSub);
+            pnlChoose.Controls.Add(btnMain);
+            pnlChoose.Controls.Add(lblMainSub);
+            pnlChoose.Location = new Point(895, 536);
+            pnlChoose.Name = "pnlChoose";
+            pnlChoose.Size = new Size(572, 591);
+            pnlChoose.TabIndex = 26;
+            // 
+            // btnCanChoose
+            // 
+            btnCanChoose.Location = new Point(258, 151);
+            btnCanChoose.Name = "btnCanChoose";
+            btnCanChoose.Size = new Size(94, 29);
+            btnCanChoose.TabIndex = 3;
+            btnCanChoose.Text = "Cancel";
+            btnCanChoose.UseVisualStyleBackColor = true;
+            btnCanChoose.Click += btnCanChoose_Click;
+            // 
+            // btnSub
+            // 
+            btnSub.Location = new Point(307, 116);
+            btnSub.Name = "btnSub";
+            btnSub.Size = new Size(94, 29);
+            btnSub.TabIndex = 2;
+            btnSub.Text = "Sub Task";
+            btnSub.UseVisualStyleBackColor = true;
+            btnSub.Click += btnSub_Click;
+            // 
+            // btnMain
+            // 
+            btnMain.Location = new Point(207, 116);
+            btnMain.Name = "btnMain";
+            btnMain.Size = new Size(94, 29);
+            btnMain.TabIndex = 1;
+            btnMain.Text = "Main Task";
+            btnMain.UseVisualStyleBackColor = true;
+            btnMain.Click += btnMain_Click;
+            // 
+            // lblMainSub
+            // 
+            lblMainSub.AutoSize = true;
+            lblMainSub.Location = new Point(206, 92);
+            lblMainSub.Name = "lblMainSub";
+            lblMainSub.Size = new Size(205, 20);
+            lblMainSub.TabIndex = 0;
+            lblMainSub.Text = "Which would you like to add?";
+            lblMainSub.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // pnlTaskCreate
+            // 
+            pnlTaskCreate.Controls.Add(btnCreateCan);
+            pnlTaskCreate.Controls.Add(btnCreateDo);
+            pnlTaskCreate.Controls.Add(tbxTaskName);
+            pnlTaskCreate.Controls.Add(lblTaskName);
+            pnlTaskCreate.Controls.Add(lblCreateLabel);
+            pnlTaskCreate.Location = new Point(339, 6);
+            pnlTaskCreate.Name = "pnlTaskCreate";
+            pnlTaskCreate.Size = new Size(572, 591);
+            pnlTaskCreate.TabIndex = 27;
+            // 
+            // lblCreateLabel
+            // 
+            lblCreateLabel.AutoSize = true;
+            lblCreateLabel.Location = new Point(29, 53);
+            lblCreateLabel.Name = "lblCreateLabel";
+            lblCreateLabel.Size = new Size(108, 20);
+            lblCreateLabel.TabIndex = 0;
+            lblCreateLabel.Text = "Add Main Task:";
+            // 
+            // lblTaskName
+            // 
+            lblTaskName.AutoSize = true;
+            lblTaskName.Location = new Point(99, 110);
+            lblTaskName.Name = "lblTaskName";
+            lblTaskName.Size = new Size(83, 20);
+            lblTaskName.TabIndex = 1;
+            lblTaskName.Text = "Task Name:";
+            // 
+            // tbxTaskName
+            // 
+            tbxTaskName.Location = new Point(188, 107);
+            tbxTaskName.Name = "tbxTaskName";
+            tbxTaskName.Size = new Size(351, 27);
+            tbxTaskName.TabIndex = 2;
+            // 
+            // btnCreateDo
+            // 
+            btnCreateDo.Location = new Point(188, 140);
+            btnCreateDo.Name = "btnCreateDo";
+            btnCreateDo.Size = new Size(174, 29);
+            btnCreateDo.TabIndex = 3;
+            btnCreateDo.Text = "Add";
+            btnCreateDo.UseVisualStyleBackColor = true;
+            // 
+            // btnCreateCan
+            // 
+            btnCreateCan.Location = new Point(365, 140);
+            btnCreateCan.Name = "btnCreateCan";
+            btnCreateCan.Size = new Size(174, 29);
+            btnCreateCan.TabIndex = 4;
+            btnCreateCan.Text = "Cancel";
+            btnCreateCan.UseVisualStyleBackColor = true;
             // 
             // ProductivityApp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
-            Controls.Add(textBox1);
-            Controls.Add(btnFinish);
-            Controls.Add(btnRemove);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnDelete);
-            Controls.Add(btnEdit);
-            Controls.Add(btnAdd);
-            Controls.Add(lblFinTasks);
-            Controls.Add(clbTaskList);
-            Controls.Add(lblTaskList);
+            Controls.Add(pnlTaskCreate);
+            Controls.Add(pnlChoose);
             Controls.Add(lblCycles);
             Controls.Add(numCycles);
             Controls.Add(btnReset);
@@ -317,13 +453,21 @@
             Controls.Add(lblSessions);
             Controls.Add(lblStatus);
             Controls.Add(lblTime);
+            Controls.Add(pnlTaskList);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProductivityApp";
             Text = "Form1";
+            Load += ProductivityApp_Load;
             ((System.ComponentModel.ISupportInitialize)numWork).EndInit();
             ((System.ComponentModel.ISupportInitialize)numShortBreak).EndInit();
             ((System.ComponentModel.ISupportInitialize)numLongBreak).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCycles).EndInit();
+            pnlTaskList.ResumeLayout(false);
+            pnlTaskList.PerformLayout();
+            pnlChoose.ResumeLayout(false);
+            pnlChoose.PerformLayout();
+            pnlTaskCreate.ResumeLayout(false);
+            pnlTaskCreate.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -353,6 +497,18 @@
         private Button btnUpdate;
         private Button btnRemove;
         private Button btnFinish;
-        private TextBox textBox1;
+        private TextBox tbxFinTasks;
+        private Panel pnlTaskList;
+        private Panel pnlChoose;
+        private Label lblMainSub;
+        private Button btnSub;
+        private Button btnMain;
+        private Button btnCanChoose;
+        private Panel pnlTaskCreate;
+        private Label lblCreateLabel;
+        private Button btnCreateCan;
+        private Button btnCreateDo;
+        private TextBox tbxTaskName;
+        private Label lblTaskName;
     }
 }
