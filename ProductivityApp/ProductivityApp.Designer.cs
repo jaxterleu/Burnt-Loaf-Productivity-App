@@ -59,11 +59,13 @@
             btnMain = new Button();
             lblMainSub = new Label();
             pnlTaskCreate = new Panel();
-            lblCreateLabel = new Label();
-            lblTaskName = new Label();
-            tbxTaskName = new TextBox();
-            btnCreateDo = new Button();
+            cbxCreate = new ComboBox();
+            lblCreateCbx = new Label();
             btnCreateCan = new Button();
+            btnCreateDo = new Button();
+            tbxTaskName = new TextBox();
+            lblTaskName = new Label();
+            lblCreateLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)numWork).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numShortBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLongBreak).BeginInit();
@@ -379,6 +381,8 @@
             // 
             // pnlTaskCreate
             // 
+            pnlTaskCreate.Controls.Add(cbxCreate);
+            pnlTaskCreate.Controls.Add(lblCreateCbx);
             pnlTaskCreate.Controls.Add(btnCreateCan);
             pnlTaskCreate.Controls.Add(btnCreateDo);
             pnlTaskCreate.Controls.Add(tbxTaskName);
@@ -389,48 +393,72 @@
             pnlTaskCreate.Size = new Size(572, 591);
             pnlTaskCreate.TabIndex = 27;
             // 
-            // lblCreateLabel
+            // cbxCreate
             // 
-            lblCreateLabel.AutoSize = true;
-            lblCreateLabel.Location = new Point(29, 53);
-            lblCreateLabel.Name = "lblCreateLabel";
-            lblCreateLabel.Size = new Size(108, 20);
-            lblCreateLabel.TabIndex = 0;
-            lblCreateLabel.Text = "Add Main Task:";
+            cbxCreate.FormattingEnabled = true;
+            cbxCreate.Location = new Point(188, 77);
+            cbxCreate.Name = "cbxCreate";
+            cbxCreate.Size = new Size(351, 28);
+            cbxCreate.TabIndex = 6;
+            cbxCreate.Visible = false;
             // 
-            // lblTaskName
+            // lblCreateCbx
             // 
-            lblTaskName.AutoSize = true;
-            lblTaskName.Location = new Point(99, 110);
-            lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(83, 20);
-            lblTaskName.TabIndex = 1;
-            lblTaskName.Text = "Task Name:";
-            // 
-            // tbxTaskName
-            // 
-            tbxTaskName.Location = new Point(188, 107);
-            tbxTaskName.Name = "tbxTaskName";
-            tbxTaskName.Size = new Size(351, 27);
-            tbxTaskName.TabIndex = 2;
-            // 
-            // btnCreateDo
-            // 
-            btnCreateDo.Location = new Point(188, 140);
-            btnCreateDo.Name = "btnCreateDo";
-            btnCreateDo.Size = new Size(174, 29);
-            btnCreateDo.TabIndex = 3;
-            btnCreateDo.Text = "Add";
-            btnCreateDo.UseVisualStyleBackColor = true;
+            lblCreateCbx.AutoSize = true;
+            lblCreateCbx.Location = new Point(38, 80);
+            lblCreateCbx.Name = "lblCreateCbx";
+            lblCreateCbx.RightToLeft = RightToLeft.No;
+            lblCreateCbx.Size = new Size(144, 20);
+            lblCreateCbx.TabIndex = 5;
+            lblCreateCbx.Text = "Select the main task:";
+            lblCreateCbx.TextAlign = ContentAlignment.TopRight;
+            lblCreateCbx.Visible = false;
             // 
             // btnCreateCan
             // 
-            btnCreateCan.Location = new Point(365, 140);
+            btnCreateCan.Location = new Point(365, 152);
             btnCreateCan.Name = "btnCreateCan";
             btnCreateCan.Size = new Size(174, 29);
             btnCreateCan.TabIndex = 4;
             btnCreateCan.Text = "Cancel";
             btnCreateCan.UseVisualStyleBackColor = true;
+            btnCreateCan.Click += btnCreateCan_Click;
+            // 
+            // btnCreateDo
+            // 
+            btnCreateDo.Location = new Point(188, 152);
+            btnCreateDo.Name = "btnCreateDo";
+            btnCreateDo.Size = new Size(174, 29);
+            btnCreateDo.TabIndex = 3;
+            btnCreateDo.Text = "Add";
+            btnCreateDo.UseVisualStyleBackColor = true;
+            btnCreateDo.Click += btnCreateDo_Click;
+            // 
+            // tbxTaskName
+            // 
+            tbxTaskName.Location = new Point(188, 115);
+            tbxTaskName.Name = "tbxTaskName";
+            tbxTaskName.Size = new Size(351, 27);
+            tbxTaskName.TabIndex = 2;
+            // 
+            // lblTaskName
+            // 
+            lblTaskName.AutoSize = true;
+            lblTaskName.Location = new Point(65, 118);
+            lblTaskName.Name = "lblTaskName";
+            lblTaskName.Size = new Size(117, 20);
+            lblTaskName.TabIndex = 1;
+            lblTaskName.Text = "New Task Name:";
+            // 
+            // lblCreateLabel
+            // 
+            lblCreateLabel.AutoSize = true;
+            lblCreateLabel.Location = new Point(101, 54);
+            lblCreateLabel.Name = "lblCreateLabel";
+            lblCreateLabel.Size = new Size(399, 20);
+            lblCreateLabel.TabIndex = 0;
+            lblCreateLabel.Text = "Which task would you like to remove from the finished list?";
+            lblCreateLabel.TextAlign = ContentAlignment.TopCenter;
             // 
             // ProductivityApp
             // 
@@ -510,5 +538,7 @@
         private Button btnCreateDo;
         private TextBox tbxTaskName;
         private Label lblTaskName;
+        private Label lblCreateCbx;
+        private ComboBox cbxCreate;
     }
 }
