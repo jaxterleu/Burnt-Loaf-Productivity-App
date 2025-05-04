@@ -1,5 +1,6 @@
 *.vs
 *.bin
 *.obj
-bin/
-obj/
+ProductivityApp/bin/
+ProductivityApp/obj/
+/ProductivityApp/obj
