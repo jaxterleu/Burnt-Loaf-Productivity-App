@@ -30,9 +30,17 @@ namespace ProductivityApp
 
         private void btnAddSub_Click(object sender, EventArgs e)
         {
-            var sub = new Subtask { Title = txtSubtaskTitle.Text.Trim() };
-            task.Subtasks.Add(sub);
-            UpdateSubtaskList();
+            if (!string.IsNullOrWhiteSpace(txtSubtaskTitle.Text)) {
+                var sub = new Subtask { Title = txtSubtaskTitle.Text.Trim() };
+                task.Subtasks.Add(sub);
+                txtSubtaskTitle.Clear();
+                UpdateSubtaskList();
+            }
+            else
+            {
+                MessageBox.Show("Subtask Title cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
 
         private void btnRemoveSub_Click(object sender, EventArgs e)
@@ -41,6 +49,11 @@ namespace ProductivityApp
             {
                 task.Subtasks.Remove(sub);
                 UpdateSubtaskList();
+            }
+            else
+            {
+                MessageBox.Show("Please select a Subtask.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
 
@@ -51,13 +64,26 @@ namespace ProductivityApp
                 sub.IsDone = !sub.IsDone;
                 UpdateSubtaskList();
             }
+            else
+            {
+                MessageBox.Show("Please select a Subtask.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            task.Title = txtTitle.Text.Trim();
-            DialogResult = DialogResult.OK;
-            Close();
+            if (!string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                task.Title = txtTitle.Text.Trim();
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Task title cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
     }
 }

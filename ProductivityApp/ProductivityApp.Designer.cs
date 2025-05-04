@@ -56,26 +56,11 @@
             listBoxSubtasks = new ListBox();
             lblSubTaskList = new Label();
             listBoxFinished = new ListBox();
-            pnlChoose = new Panel();
-            btnCanChoose = new Button();
-            btnSub = new Button();
-            btnMain = new Button();
-            lblMainSub = new Label();
-            pnlTaskCreate = new Panel();
-            cbxCreate = new ComboBox();
-            lblCreateCbx = new Label();
-            btnCreateCan = new Button();
-            btnCreateDo = new Button();
-            tbxTaskName = new TextBox();
-            lblTaskName = new Label();
-            lblCreateLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)numWork).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numShortBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLongBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCycles).BeginInit();
             pnlTaskList.SuspendLayout();
-            pnlChoose.SuspendLayout();
-            pnlTaskCreate.SuspendLayout();
             SuspendLayout();
             // 
             // lblTime
@@ -363,155 +348,12 @@
             listBoxFinished.Size = new Size(244, 364);
             listBoxFinished.TabIndex = 25;
             // 
-            // pnlChoose
-            // 
-            pnlChoose.Controls.Add(btnCanChoose);
-            pnlChoose.Controls.Add(btnSub);
-            pnlChoose.Controls.Add(btnMain);
-            pnlChoose.Controls.Add(lblMainSub);
-            pnlChoose.Location = new Point(840, 31);
-            pnlChoose.Margin = new Padding(3, 2, 3, 2);
-            pnlChoose.Name = "pnlChoose";
-            pnlChoose.Size = new Size(500, 443);
-            pnlChoose.TabIndex = 26;
-            // 
-            // btnCanChoose
-            // 
-            btnCanChoose.Location = new Point(226, 113);
-            btnCanChoose.Margin = new Padding(3, 2, 3, 2);
-            btnCanChoose.Name = "btnCanChoose";
-            btnCanChoose.Size = new Size(82, 22);
-            btnCanChoose.TabIndex = 3;
-            btnCanChoose.Text = "Cancel";
-            btnCanChoose.UseVisualStyleBackColor = true;
-            btnCanChoose.Click += btnCanChoose_Click;
-            // 
-            // btnSub
-            // 
-            btnSub.Location = new Point(269, 87);
-            btnSub.Margin = new Padding(3, 2, 3, 2);
-            btnSub.Name = "btnSub";
-            btnSub.Size = new Size(82, 22);
-            btnSub.TabIndex = 2;
-            btnSub.Text = "Sub Task";
-            btnSub.UseVisualStyleBackColor = true;
-            btnSub.Click += btnSub_Click;
-            // 
-            // btnMain
-            // 
-            btnMain.Location = new Point(181, 87);
-            btnMain.Margin = new Padding(3, 2, 3, 2);
-            btnMain.Name = "btnMain";
-            btnMain.Size = new Size(82, 22);
-            btnMain.TabIndex = 1;
-            btnMain.Text = "Main Task";
-            btnMain.UseVisualStyleBackColor = true;
-            btnMain.Click += btnMain_Click;
-            // 
-            // lblMainSub
-            // 
-            lblMainSub.AutoSize = true;
-            lblMainSub.Location = new Point(180, 69);
-            lblMainSub.Name = "lblMainSub";
-            lblMainSub.Size = new Size(163, 15);
-            lblMainSub.TabIndex = 0;
-            lblMainSub.Text = "Which would you like to add?";
-            lblMainSub.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // pnlTaskCreate
-            // 
-            pnlTaskCreate.Controls.Add(cbxCreate);
-            pnlTaskCreate.Controls.Add(lblCreateCbx);
-            pnlTaskCreate.Controls.Add(btnCreateCan);
-            pnlTaskCreate.Controls.Add(btnCreateDo);
-            pnlTaskCreate.Controls.Add(tbxTaskName);
-            pnlTaskCreate.Controls.Add(lblTaskName);
-            pnlTaskCreate.Controls.Add(lblCreateLabel);
-            pnlTaskCreate.Location = new Point(293, 47);
-            pnlTaskCreate.Margin = new Padding(3, 2, 3, 2);
-            pnlTaskCreate.Name = "pnlTaskCreate";
-            pnlTaskCreate.Size = new Size(500, 443);
-            pnlTaskCreate.TabIndex = 27;
-            // 
-            // cbxCreate
-            // 
-            cbxCreate.FormattingEnabled = true;
-            cbxCreate.Location = new Point(164, 58);
-            cbxCreate.Margin = new Padding(3, 2, 3, 2);
-            cbxCreate.Name = "cbxCreate";
-            cbxCreate.Size = new Size(308, 23);
-            cbxCreate.TabIndex = 6;
-            cbxCreate.Visible = false;
-            // 
-            // lblCreateCbx
-            // 
-            lblCreateCbx.AutoSize = true;
-            lblCreateCbx.Location = new Point(33, 60);
-            lblCreateCbx.Name = "lblCreateCbx";
-            lblCreateCbx.RightToLeft = RightToLeft.No;
-            lblCreateCbx.Size = new Size(115, 15);
-            lblCreateCbx.TabIndex = 5;
-            lblCreateCbx.Text = "Select the main task:";
-            lblCreateCbx.TextAlign = ContentAlignment.TopRight;
-            lblCreateCbx.Visible = false;
-            // 
-            // btnCreateCan
-            // 
-            btnCreateCan.Location = new Point(319, 114);
-            btnCreateCan.Margin = new Padding(3, 2, 3, 2);
-            btnCreateCan.Name = "btnCreateCan";
-            btnCreateCan.Size = new Size(152, 22);
-            btnCreateCan.TabIndex = 4;
-            btnCreateCan.Text = "Cancel";
-            btnCreateCan.UseVisualStyleBackColor = true;
-            btnCreateCan.Click += btnCreateCan_Click;
-            // 
-            // btnCreateDo
-            // 
-            btnCreateDo.Location = new Point(164, 114);
-            btnCreateDo.Margin = new Padding(3, 2, 3, 2);
-            btnCreateDo.Name = "btnCreateDo";
-            btnCreateDo.Size = new Size(152, 22);
-            btnCreateDo.TabIndex = 3;
-            btnCreateDo.Text = "Add";
-            btnCreateDo.UseVisualStyleBackColor = true;
-            btnCreateDo.Click += btnCreateDo_Click;
-            // 
-            // tbxTaskName
-            // 
-            tbxTaskName.Location = new Point(164, 86);
-            tbxTaskName.Margin = new Padding(3, 2, 3, 2);
-            tbxTaskName.Name = "tbxTaskName";
-            tbxTaskName.Size = new Size(308, 23);
-            tbxTaskName.TabIndex = 2;
-            // 
-            // lblTaskName
-            // 
-            lblTaskName.AutoSize = true;
-            lblTaskName.Location = new Point(57, 88);
-            lblTaskName.Name = "lblTaskName";
-            lblTaskName.Size = new Size(95, 15);
-            lblTaskName.TabIndex = 1;
-            lblTaskName.Text = "New Task Name:";
-            // 
-            // lblCreateLabel
-            // 
-            lblCreateLabel.AutoSize = true;
-            lblCreateLabel.Location = new Point(88, 40);
-            lblCreateLabel.Name = "lblCreateLabel";
-            lblCreateLabel.Size = new Size(319, 15);
-            lblCreateLabel.TabIndex = 0;
-            lblCreateLabel.Text = "Which task would you like to remove from the finished list?";
-            lblCreateLabel.TextAlign = ContentAlignment.TopCenter;
-            // 
             // ProductivityApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 450);
+            ClientSize = new Size(1143, 480);
             Controls.Add(pnlTaskList);
-            Controls.Add(pnlTaskCreate);
-            Controls.Add(pnlChoose);
             Controls.Add(lblCycles);
             Controls.Add(numCycles);
             Controls.Add(btnReset);
@@ -535,10 +377,6 @@
             ((System.ComponentModel.ISupportInitialize)numCycles).EndInit();
             pnlTaskList.ResumeLayout(false);
             pnlTaskList.PerformLayout();
-            pnlChoose.ResumeLayout(false);
-            pnlChoose.PerformLayout();
-            pnlTaskCreate.ResumeLayout(false);
-            pnlTaskCreate.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -568,19 +406,6 @@
         private Button btnRemove;
         private Button btnFinish;
         private Panel pnlTaskList;
-        private Panel pnlChoose;
-        private Label lblMainSub;
-        private Button btnSub;
-        private Button btnMain;
-        private Button btnCanChoose;
-        private Panel pnlTaskCreate;
-        private Label lblCreateLabel;
-        private Button btnCreateCan;
-        private Button btnCreateDo;
-        private TextBox tbxTaskName;
-        private Label lblTaskName;
-        private Label lblCreateCbx;
-        private ComboBox cbxCreate;
         private ListBox listBoxFinished;
         private Label lblSubTaskList;
         private ListBox listBoxSubtasks;
