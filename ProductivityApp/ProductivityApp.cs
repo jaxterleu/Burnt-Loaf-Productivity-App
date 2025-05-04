@@ -3,6 +3,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
 using System;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
+using System.Threading.Tasks;
 
 namespace ProductivityApp
 {
@@ -17,11 +18,17 @@ namespace ProductivityApp
         //Task List Stuff
         int AddEditDelete = 0;
         int MainSub = 0;
+        private List<TaskItem> taskList = new();
+        private List<TaskItem> finishedList = new();
 
+        //---------------------------------------------------------------------------TIMER LOGIC
         public ProductivityApp()
         {
             InitializeComponent();
             InitTimer();
+            UpdateTaskListDisplay();
+            UpdateFinishedListDisplay();
+            listBoxTasks.SelectedIndexChanged += listBoxTasks_SelectedIndexChanged;
         }
         private void InitTimer()
         {
@@ -97,6 +104,8 @@ namespace ProductivityApp
             lblSessions.Text = "Sessions: 0";
         }
 
+        //------------------------------------------------------------------------------------LOAD
+
         private void ProductivityApp_Load(object sender, EventArgs e)
         {
             //Setting up the panels
@@ -107,33 +116,43 @@ namespace ProductivityApp
             pnlTaskCreate.Visible = false;
         }
 
+        //-------------------------------------------------------------------------------------BASIC FORM
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            pnlTaskList.Visible = false;
-            pnlChoose.Visible = true;
-            lblMainSub.Text = "Which would you like to add?";
 
-            //AddEditDelete 0 = Add
+            var task = new TaskItem();
+            var dialog = new TaskEditorForm(task);
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                taskList.Add(task);
+                UpdateTaskListDisplay();
+            }
             AddEditDelete = 0;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            pnlTaskList.Visible = false;
-            pnlChoose.Visible = true;
-            lblMainSub.Text = "Which would you like to edit?";
 
-            //AddEditDelete 1 = Edit
+            if (listBoxTasks.SelectedItem is TaskItem selectedTask)
+            {
+                var dialog = new TaskEditorForm(selectedTask);
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    UpdateTaskListDisplay();
+            }
+
             AddEditDelete = 1;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            pnlTaskList.Visible = false;
-            pnlChoose.Visible = true;
-            lblMainSub.Text = "Which would you like to remove?";
 
-            //AddEditDelete 2 = Delete
+            if (listBoxTasks.SelectedItem is TaskItem selectedTask)
+            {
+                taskList.Remove(selectedTask);
+                UpdateTaskListDisplay();
+            }
+
             AddEditDelete = 2;
         }
 
@@ -146,33 +165,22 @@ namespace ProductivityApp
         {
             AddEditDelete = 3;
 
-            //Add getting the task list here
-
-            //Change text
-            lblCreateLabel.Text = "Which task would you like to remove from the finished list?";
-            lblCreateCbx.Text = "Select task to Delete:";
-            btnCreateDo.Text = "Delete";
-
-            //Change the visible functions
-            lblCreateCbx.Visible = true;
-            cbxCreate.Visible = true;
-            lblTaskName.Visible = false;
-            tbxTaskName.Visible = false;
-
-            //fix the positioning
-            lblCreateLabel.Location = new Point(101, 54);
-            lblCreateCbx.Location = new Point(36, 81);
-            cbxCreate.Location = new Point(188, 78);
-            btnCreateDo.Location = new Point(188, 115);
-            btnCreateCan.Location = new Point(365, 115);
-
-            pnlTaskCreate.Visible = true;
-            pnlTaskList.Visible = false;
+            if (listBoxFinished.SelectedItem is TaskItem selectedTask)
+            {
+                finishedList.Remove(selectedTask);
+                UpdateFinishedListDisplay();
+            }
         }
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
-
+            if (listBoxTasks.SelectedItem is TaskItem selectedTask)
+            {
+                taskList.Remove(selectedTask);
+                finishedList.Add(selectedTask);
+                UpdateTaskListDisplay();
+                UpdateFinishedListDisplay();
+            }
         }
 
         private void btnMain_Click(object sender, EventArgs e)
@@ -342,7 +350,7 @@ namespace ProductivityApp
         private void btnCreateDo_Click(object sender, EventArgs e)
         {
             //If the entry is editing or deleting the subtask
-            if (AddEditDelete == 1 && MainSub == 1) 
+            if (AddEditDelete == 1 && MainSub == 1)
             {
                 //MainSub 2 = Editing or Deleting Sub
                 MainSub = 2;
@@ -397,12 +405,12 @@ namespace ProductivityApp
             //Add the adding code here
             if (AddEditDelete == 0)
             {
-                if (MainSub == 0) 
+                if (MainSub == 0)
                 {
                     //Add entering stuff into the list here
 
                 }
-                if (MainSub == 1) 
+                if (MainSub == 1)
                 {
                     //Add entering stuff into the list here
                 }
@@ -434,7 +442,7 @@ namespace ProductivityApp
                 }
             }
             //Add removing stuff from the finished list
-            if (AddEditDelete == 3) 
+            if (AddEditDelete == 3)
             {
                 //Add removing stuff from the list here
             }
@@ -444,6 +452,76 @@ namespace ProductivityApp
         {
             pnlTaskCreate.Visible = false;
             pnlTaskList.Visible = true;
+        }
+
+        //------------------------------------------------------------------------------------------------TASK LOGIC
+        public class Subtask
+        {
+            public string Title { get; set; }
+            public bool IsDone { get; set; }
+            public override string ToString() => (IsDone ? "[x] " : "[ ] ") + Title;
+        }
+
+        public class TaskItem
+        {
+            public string Title { get; set; }
+            public List<Subtask> Subtasks { get; set; } = new List<Subtask>();
+            public override string ToString() => Title;
+        }
+        private void listBoxTasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxSubtasks.Items.Clear();
+
+            if (listBoxTasks.SelectedItem is TaskItem selectedTask)
+            {
+                foreach (var sub in selectedTask.Subtasks)
+                    listBoxSubtasks.Items.Add(sub);
+            }
+        }
+        private void UpdateTaskListDisplay()
+        {
+            listBoxTasks.Items.Clear();
+            foreach (var task in taskList)
+                listBoxTasks.Items.Add(task);
+            listBoxSubtasks.Items.Clear(); // Reset subtasks if no task is selected
+        }
+        private void UpdateFinishedListDisplay()
+        {
+            listBoxFinished.Items.Clear();
+            foreach (var task in finishedList)
+                listBoxFinished.Items.Add(task);
+            listBoxSubtasks.Items.Clear(); // Reset subtasks if no task is selected
+        }
+        private void UpdateSubtaskList()
+        {
+            if (listBoxTasks.SelectedItem is TaskItem selectedTask)
+            {
+                listBoxSubtasks.Items.Clear();
+                foreach (var sub in selectedTask.Subtasks)
+                    listBoxSubtasks.Items.Add(sub);
+            }
+        }
+
+        private void btnToggleDone_Click_1(object sender, EventArgs e)
+        {
+            if (listBoxSubtasks.SelectedItem is Subtask sub)
+            {
+                sub.IsDone = !sub.IsDone;
+                UpdateSubtaskList();
+            }
+        }
+
+        private void btnClearFinished_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Are you sure you want to clear all finished tasks?",
+                                  "Confirm Clear",
+                                  MessageBoxButtons.YesNo,
+                                  MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                listBoxFinished.Items.Clear();
+            }
         }
     }
 }
