@@ -43,7 +43,6 @@
             numCycles = new NumericUpDown();
             lblCycles = new Label();
             lblTaskList = new Label();
-            listBoxTasks = new CheckedListBox();
             lblFinTasks = new Label();
             btnAdd = new Button();
             btnEdit = new Button();
@@ -56,6 +55,7 @@
             listBoxSubtasks = new ListBox();
             lblSubTaskList = new Label();
             listBoxFinished = new ListBox();
+            listBoxTasks = new ListBox();
             ((System.ComponentModel.ISupportInitialize)numWork).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numShortBreak).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numLongBreak).BeginInit();
@@ -206,15 +206,6 @@
             lblTaskList.TabIndex = 14;
             lblTaskList.Text = "Tasks List:";
             // 
-            // listBoxTasks
-            // 
-            listBoxTasks.FormattingEnabled = true;
-            listBoxTasks.Location = new Point(6, 20);
-            listBoxTasks.Margin = new Padding(3, 2, 3, 2);
-            listBoxTasks.Name = "listBoxTasks";
-            listBoxTasks.Size = new Size(255, 364);
-            listBoxTasks.TabIndex = 15;
-            // 
             // lblFinTasks
             // 
             lblFinTasks.AutoSize = true;
@@ -274,14 +265,15 @@
             btnFinish.Location = new Point(6, 416);
             btnFinish.Margin = new Padding(3, 2, 3, 2);
             btnFinish.Name = "btnFinish";
-            btnFinish.Size = new Size(491, 22);
+            btnFinish.Size = new Size(254, 22);
             btnFinish.TabIndex = 23;
-            btnFinish.Text = "Finish Session";
+            btnFinish.Text = "Finish Task";
             btnFinish.UseVisualStyleBackColor = false;
             btnFinish.Click += btnFinish_Click;
             // 
             // pnlTaskList
             // 
+            pnlTaskList.Controls.Add(listBoxTasks);
             pnlTaskList.Controls.Add(btnClearFinished);
             pnlTaskList.Controls.Add(btnToggleDone);
             pnlTaskList.Controls.Add(listBoxSubtasks);
@@ -292,7 +284,6 @@
             pnlTaskList.Controls.Add(lblFinTasks);
             pnlTaskList.Controls.Add(lblTaskList);
             pnlTaskList.Controls.Add(btnDelete);
-            pnlTaskList.Controls.Add(listBoxTasks);
             pnlTaskList.Controls.Add(btnEdit);
             pnlTaskList.Controls.Add(btnAdd);
             pnlTaskList.Location = new Point(307, 11);
@@ -348,6 +339,15 @@
             listBoxFinished.Size = new Size(244, 364);
             listBoxFinished.TabIndex = 25;
             // 
+            // listBoxTasks
+            // 
+            listBoxTasks.FormattingEnabled = true;
+            listBoxTasks.ItemHeight = 15;
+            listBoxTasks.Location = new Point(6, 20);
+            listBoxTasks.Name = "listBoxTasks";
+            listBoxTasks.Size = new Size(255, 364);
+            listBoxTasks.TabIndex = 30;
+            // 
             // ProductivityApp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -398,7 +398,6 @@
         private NumericUpDown numCycles;
         private Label lblCycles;
         private Label lblTaskList;
-        private CheckedListBox listBoxTasks;
         private Label lblFinTasks;
         private Button btnAdd;
         private Button btnEdit;
@@ -411,5 +410,6 @@
         private ListBox listBoxSubtasks;
         private Button btnToggleDone;
         private Button btnClearFinished;
+        private ListBox listBoxTasks;
     }
 }
