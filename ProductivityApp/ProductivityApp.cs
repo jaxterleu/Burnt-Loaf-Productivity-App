@@ -158,7 +158,7 @@ namespace ProductivityApp
                     MessageBoxIcon.Information,
                     MessageBoxDefaultButton.Button1
                 );
-                UpdateTaskListDisplay();
+                UpdateFinishedListDisplay();
             }
             else
             {
@@ -219,6 +219,11 @@ namespace ProductivityApp
                 //Edit and displays list
                 taskList.Remove(selectedTask);
                 UpdateTaskListDisplay();
+                if (taskList.Count == 0) 
+                {
+                    rootTasks.RemoveAll();
+                    tasks.Save(pathTasks);
+                }
             }
             else
             {
@@ -233,11 +238,16 @@ namespace ProductivityApp
             if (listBoxFinished.SelectedItem is TaskItem selectedTask)
             {
                 //Clear the Tasks children
-                rootTasks.RemoveAll();
+                rootFin.RemoveAll();
 
                 //Remove Task from finished list
                 finishedList.Remove(selectedTask);
                 UpdateFinishedListDisplay();
+                if (taskList.Count == 0)
+                {
+                    rootFin.RemoveAll();
+                    fin.Save(pathFin);
+                }
             }
             else
             {
@@ -252,16 +262,27 @@ namespace ProductivityApp
             {
                 //Clear the Tasks children
                 rootTasks.RemoveAll();
+                rootFin.RemoveAll();
 
                 //Update task list and finished task list
                 taskList.Remove(selectedTask);
                 finishedList.Add(selectedTask);
                 UpdateTaskListDisplay();
                 UpdateFinishedListDisplay();
+                if (taskList.Count == 0)
+                {
+                    rootTasks.RemoveAll();
+                    tasks.Save(pathTasks);
+                }
+                if (finishedList.Count == 0) 
+                {
+                    rootFin.RemoveAll();
+                    fin.Save(pathFin);
+                }
             }
             else
             {
-                MessageBox.Show("Please select a subtask to finish.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select a Task to finish.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
@@ -308,9 +329,11 @@ namespace ProductivityApp
                 {
                     //Create individual Subtask elements and their data
                     XmlElement newSubtask = tasks.CreateElement("Subtask");
+                    XmlText subDone = tasks.CreateTextNode(sub.IsDone ? "[x] " : "[ ] ");
                     XmlText subtask = tasks.CreateTextNode(sub.Title);
 
                     //Add data to subtask
+                    newSubtask.AppendChild(subDone);
                     newSubtask.AppendChild(subtask);
 
                     //Add subtask element to subtask list
@@ -337,7 +360,26 @@ namespace ProductivityApp
         {
             listBoxFinished.Items.Clear();
             foreach (var task in finishedList)
+            {
+                //Create Task element
+                XmlElement newTask = fin.CreateElement("Task");
+
+                //Create title element and it's data
+                XmlElement newTitle = fin.CreateElement("Title");
+                XmlText title = fin.CreateTextNode(task.Title);
+
+                //Add data to title & subtasks to subtask list
+                newTitle.AppendChild(title);
+
+                //Add title and subtasks as elements of tasks
+                newTask.AppendChild(newTitle);
+
+                rootFin.AppendChild(newTask);
+
+                fin.Save(pathFin);
+
                 listBoxFinished.Items.Add(task);
+            }
             listBoxSubtasks.Items.Clear(); // Reset subtasks if no task is selected
         }
         private void UpdateSubtaskList()
@@ -369,6 +411,11 @@ namespace ProductivityApp
             if (confirm == DialogResult.Yes)
             {
                 listBoxFinished.Items.Clear();
+                finishedList.Clear();
+
+                //Clear Fin XML
+                rootFin.RemoveAll();
+                fin.Save(pathFin);
             }
         }
     }
