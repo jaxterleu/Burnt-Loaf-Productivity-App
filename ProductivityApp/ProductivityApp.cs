@@ -22,8 +22,11 @@ namespace ProductivityApp
 
         //XML stuff
         XmlDocument tasks;
-        XmlElement root;
-        string path = "../../../../tasks.xml";
+        XmlDocument fin;
+        XmlElement rootTasks;
+        XmlElement rootFin;
+        string pathTasks = "../../../../tasks.xml";
+        string pathFin = "../../../../fin.xml";
 
 
         //---------------------------------------------------------------------------TIMER LOGIC
@@ -113,24 +116,74 @@ namespace ProductivityApp
 
         private void ProductivityApp_Load(object sender, EventArgs e)
         {
-            //Loading the XML file
+            //Loading the XML files
             tasks = new XmlDocument();
-            tasks.Load(path);
-            root = tasks.DocumentElement;
+            tasks.Load(pathTasks);
+            rootTasks = tasks.DocumentElement;
+            fin = new XmlDocument();
+            fin.Load(pathFin);
+            rootFin = fin.DocumentElement;
 
             //Setting up the panels
             pnlTaskList.Location = new Point(339, 6);
+
+            if (rootTasks != null)
+            {
+                var optionChosen = MessageBox.Show(
+                    "Tasks XML file loaded successfully!",
+                    "Info",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+
+                UpdateTaskListDisplay();
+            }
+            else
+            {
+                var optionChosen = MessageBox.Show(
+                    "Tasks XML file leoaded unsuccessfully",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1
+                    );
+            }
+            if (rootFin != null)
+            {
+                var optionChosen = MessageBox.Show(
+                    "Fin XML file loaded successfully!",
+                    "Info",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1
+                );
+                UpdateTaskListDisplay();
+            }
+            else
+            {
+                var optionChosen = MessageBox.Show(
+                    "Fin XML file leoaded unsuccessfully",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1
+                    );
+            }
         }
 
         //-------------------------------------------------------------------------------------BASIC FORM
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
             var task = new TaskItem();
             var dialog = new TaskEditorForm(task);
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                //Clear the Tasks children
+                rootTasks.RemoveAll();
+
+                //Adds task to the list and displays list
                 taskList.Add(task);
                 UpdateTaskListDisplay();
             }
@@ -141,6 +194,10 @@ namespace ProductivityApp
 
             if (listBoxTasks.SelectedItem is TaskItem selectedTask)
             {
+                //Clear the Tasks children
+                rootTasks.RemoveAll();
+
+                //Edit task and displays list
                 var dialog = new TaskEditorForm(selectedTask);
                 if (dialog.ShowDialog() == DialogResult.OK)
                     UpdateTaskListDisplay();
@@ -154,9 +211,12 @@ namespace ProductivityApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
             if (listBoxTasks.SelectedItem is TaskItem selectedTask)
             {
+                //Clear the Tasks children
+                rootTasks.RemoveAll();
+
+                //Edit and displays list
                 taskList.Remove(selectedTask);
                 UpdateTaskListDisplay();
             }
@@ -172,6 +232,10 @@ namespace ProductivityApp
 
             if (listBoxFinished.SelectedItem is TaskItem selectedTask)
             {
+                //Clear the Tasks children
+                rootTasks.RemoveAll();
+
+                //Remove Task from finished list
                 finishedList.Remove(selectedTask);
                 UpdateFinishedListDisplay();
             }
@@ -186,6 +250,10 @@ namespace ProductivityApp
         {
             if (listBoxTasks.SelectedItem is TaskItem selectedTask)
             {
+                //Clear the Tasks children
+                rootTasks.RemoveAll();
+
+                //Update task list and finished task list
                 taskList.Remove(selectedTask);
                 finishedList.Add(selectedTask);
                 UpdateTaskListDisplay();
@@ -225,7 +293,44 @@ namespace ProductivityApp
         {
             listBoxTasks.Items.Clear();
             foreach (var task in taskList)
+            {
+                //Create Task element
+                XmlElement newTask = tasks.CreateElement("Task");
+
+                //Create title element and it's data
+                XmlElement newTitle = tasks.CreateElement("Title");
+                XmlText title = tasks.CreateTextNode(task.Title);
+
+                //Create subtask list element
+                XmlElement newSubList = tasks.CreateElement("SubtaskList");
+
+                foreach (var sub in task.Subtasks)
+                {
+                    //Create individual Subtask elements and their data
+                    XmlElement newSubtask = tasks.CreateElement("Subtask");
+                    XmlText subtask = tasks.CreateTextNode(sub.Title);
+
+                    //Add data to subtask
+                    newSubtask.AppendChild(subtask);
+
+                    //Add subtask element to subtask list
+                    newSubList.AppendChild(newSubtask);
+                }
+
+                //Add data to title & subtasks to subtask list
+                newTitle.AppendChild(title);
+
+                //Add title and subtasks as elements of tasks
+                newTask.AppendChild(newTitle);
+                newTask.AppendChild(newSubList);
+
+                rootTasks.AppendChild(newTask);
+
+                //Add Items to display
                 listBoxTasks.Items.Add(task);
+
+                tasks.Save(pathTasks);
+            }
             listBoxSubtasks.Items.Clear(); // Reset subtasks if no task is selected
         }
         private void UpdateFinishedListDisplay()

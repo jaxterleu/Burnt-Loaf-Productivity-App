@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tasks>
+  <Task>
+    <Title>Target</Title>
+    <SubtaskList>
+      <Subtask>troget</Subtask>
+      <Subtask>form</Subtask>
+    </SubtaskList>
+  </Task>
+</Tasks>
