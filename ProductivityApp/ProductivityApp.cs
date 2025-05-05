@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace ProductivityApp
 {
@@ -16,10 +17,14 @@ namespace ProductivityApp
         private bool isWorkSession = true;
 
         //Task List Stuff
-        //int AddEditDelete = 0;
-        //int MainSub = 0;
         private List<TaskItem> taskList = new();
         private List<TaskItem> finishedList = new();
+
+        //XML stuff
+        XmlDocument tasks;
+        XmlElement root;
+        string path = "../../../../tasks.xml";
+
 
         //---------------------------------------------------------------------------TIMER LOGIC
         public ProductivityApp()
@@ -108,6 +113,11 @@ namespace ProductivityApp
 
         private void ProductivityApp_Load(object sender, EventArgs e)
         {
+            //Loading the XML file
+            tasks = new XmlDocument();
+            tasks.Load(path);
+            root = tasks.DocumentElement;
+
             //Setting up the panels
             pnlTaskList.Location = new Point(339, 6);
         }
@@ -155,11 +165,6 @@ namespace ProductivityApp
                 MessageBox.Show("Please select a Task.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
