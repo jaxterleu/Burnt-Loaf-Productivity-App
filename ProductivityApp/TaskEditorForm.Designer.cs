@@ -42,25 +42,27 @@
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(63, 59);
+            txtTitle.Location = new Point(72, 79);
+            txtTitle.Margin = new Padding(3, 4, 3, 4);
             txtTitle.Name = "txtTitle";
-            txtTitle.Size = new Size(267, 23);
+            txtTitle.Size = new Size(305, 27);
             txtTitle.TabIndex = 0;
             // 
             // listBoxSubtasks
             // 
             listBoxSubtasks.FormattingEnabled = true;
-            listBoxSubtasks.ItemHeight = 15;
-            listBoxSubtasks.Location = new Point(63, 215);
+            listBoxSubtasks.Location = new Point(72, 287);
+            listBoxSubtasks.Margin = new Padding(3, 4, 3, 4);
             listBoxSubtasks.Name = "listBoxSubtasks";
-            listBoxSubtasks.Size = new Size(267, 139);
+            listBoxSubtasks.Size = new Size(305, 184);
             listBoxSubtasks.TabIndex = 1;
             // 
             // btnAddSub
             // 
-            btnAddSub.Location = new Point(161, 142);
+            btnAddSub.Location = new Point(184, 189);
+            btnAddSub.Margin = new Padding(3, 4, 3, 4);
             btnAddSub.Name = "btnAddSub";
-            btnAddSub.Size = new Size(75, 23);
+            btnAddSub.Size = new Size(86, 31);
             btnAddSub.TabIndex = 2;
             btnAddSub.Text = "Add";
             btnAddSub.UseVisualStyleBackColor = true;
@@ -68,9 +70,10 @@
             // 
             // btnRemoveSub
             // 
-            btnRemoveSub.Location = new Point(63, 360);
+            btnRemoveSub.Location = new Point(72, 480);
+            btnRemoveSub.Margin = new Padding(3, 4, 3, 4);
             btnRemoveSub.Name = "btnRemoveSub";
-            btnRemoveSub.Size = new Size(75, 23);
+            btnRemoveSub.Size = new Size(86, 31);
             btnRemoveSub.TabIndex = 3;
             btnRemoveSub.Text = "Remove";
             btnRemoveSub.UseVisualStyleBackColor = true;
@@ -78,9 +81,10 @@
             // 
             // btnToggleDone
             // 
-            btnToggleDone.Location = new Point(225, 360);
+            btnToggleDone.Location = new Point(257, 480);
+            btnToggleDone.Margin = new Padding(3, 4, 3, 4);
             btnToggleDone.Name = "btnToggleDone";
-            btnToggleDone.Size = new Size(105, 23);
+            btnToggleDone.Size = new Size(120, 31);
             btnToggleDone.TabIndex = 4;
             btnToggleDone.Text = "Finish Subtask";
             btnToggleDone.UseVisualStyleBackColor = true;
@@ -88,9 +92,10 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(104, 425);
+            btnSave.Location = new Point(119, 567);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(186, 23);
+            btnSave.Size = new Size(213, 31);
             btnSave.TabIndex = 5;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -99,42 +104,43 @@
             // lbltxtTitle
             // 
             lbltxtTitle.AutoSize = true;
-            lbltxtTitle.Location = new Point(63, 41);
+            lbltxtTitle.Location = new Point(72, 55);
             lbltxtTitle.Name = "lbltxtTitle";
-            lbltxtTitle.Size = new Size(68, 15);
+            lbltxtTitle.Size = new Size(83, 20);
             lbltxtTitle.TabIndex = 6;
             lbltxtTitle.Text = "Task Name:";
             // 
             // lblSubtasks
             // 
             lblSubtasks.AutoSize = true;
-            lblSubtasks.Location = new Point(63, 197);
+            lblSubtasks.Location = new Point(72, 263);
             lblSubtasks.Name = "lblSubtasks";
-            lblSubtasks.Size = new Size(59, 15);
+            lblSubtasks.Size = new Size(73, 20);
             lblSubtasks.TabIndex = 7;
             lblSubtasks.Text = "Subtasks: ";
             // 
             // txtSubtaskTitle
             // 
-            txtSubtaskTitle.Location = new Point(63, 113);
+            txtSubtaskTitle.Location = new Point(72, 151);
+            txtSubtaskTitle.Margin = new Padding(3, 4, 3, 4);
             txtSubtaskTitle.Name = "txtSubtaskTitle";
-            txtSubtaskTitle.Size = new Size(267, 23);
+            txtSubtaskTitle.Size = new Size(305, 27);
             txtSubtaskTitle.TabIndex = 8;
             // 
             // lblSubtaskTitle
             // 
             lblSubtaskTitle.AutoSize = true;
-            lblSubtaskTitle.Location = new Point(63, 95);
+            lblSubtaskTitle.Location = new Point(72, 127);
             lblSubtaskTitle.Name = "lblSubtaskTitle";
-            lblSubtaskTitle.Size = new Size(74, 15);
+            lblSubtaskTitle.Size = new Size(93, 20);
             lblSubtaskTitle.TabIndex = 9;
             lblSubtaskTitle.Text = "Subtask Title";
             // 
             // TaskEditorForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(393, 496);
+            ClientSize = new Size(449, 661);
             Controls.Add(lblSubtaskTitle);
             Controls.Add(txtSubtaskTitle);
             Controls.Add(lblSubtasks);
@@ -145,6 +151,7 @@
             Controls.Add(btnAddSub);
             Controls.Add(listBoxSubtasks);
             Controls.Add(txtTitle);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "TaskEditorForm";
             Text = "TaskEditorForm";
             ResumeLayout(false);

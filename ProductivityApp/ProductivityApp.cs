@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Reflection;
 
 namespace ProductivityApp
 {
@@ -129,14 +130,33 @@ namespace ProductivityApp
 
             if (rootTasks != null)
             {
-                var optionChosen = MessageBox.Show(
-                    "Tasks XML file loaded successfully!",
-                    "Info",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1
-                );
+                XmlNodeList children = rootTasks.ChildNodes;
+                for (int i = 0; i < children.Count; i++)
+                {
+                    XmlNode Task = children[i];
 
+                    var item = new TaskItem();
+                    item.Title = Task.FirstChild.InnerText;
+                    taskList.Add(item);
+
+                    XmlNode subtask = Task.LastChild;
+                    XmlNodeList subChildren = subtask.ChildNodes;
+
+                    foreach (XmlNode subChild in subChildren)
+                    {
+                        var sub = new Subtask { Title = subChild.FirstChild.InnerText.Trim() };
+                        if (subChild.LastChild.InnerText == "[x]")
+                        {
+                            sub.IsDone = true;
+                        }
+                        else
+                        {
+                            sub.IsDone = false;
+                        }
+                            item.Subtasks.Add(sub);
+                    }
+                }
+                rootTasks.RemoveAll();
                 UpdateTaskListDisplay();
             }
             else
@@ -151,13 +171,16 @@ namespace ProductivityApp
             }
             if (rootFin != null)
             {
-                var optionChosen = MessageBox.Show(
-                    "Fin XML file loaded successfully!",
-                    "Info",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1
-                );
+                XmlNodeList children = rootFin.ChildNodes;
+                for (int i = 0; i < children.Count; i++)
+                {
+                    XmlNode Task = children[i];
+
+                    var item = new TaskItem();
+                    item.Title = Task.FirstChild.InnerText;
+                    finishedList.Add(item);
+                }
+                rootFin.RemoveAll();
                 UpdateFinishedListDisplay();
             }
             else
@@ -329,12 +352,18 @@ namespace ProductivityApp
                 {
                     //Create individual Subtask elements and their data
                     XmlElement newSubtask = tasks.CreateElement("Subtask");
-                    XmlText subDone = tasks.CreateTextNode(sub.IsDone ? "[x] " : "[ ] ");
-                    XmlText subtask = tasks.CreateTextNode(sub.Title);
+                    XmlElement newSubTitle = tasks.CreateElement("SubTitle");
+                    XmlElement newSubDone = tasks.CreateElement("SubDone");
+                    XmlText subDone = tasks.CreateTextNode(sub.IsDone ? "[x]" : "[ ]");
+                    XmlText subTitle = tasks.CreateTextNode(sub.Title);
 
-                    //Add data to subtask
-                    newSubtask.AppendChild(subDone);
-                    newSubtask.AppendChild(subtask);
+                    //Add data to respective elements
+                    newSubTitle.AppendChild(subTitle);
+                    newSubDone.AppendChild(subDone);
+
+                    //Add elements to subtask
+                    newSubtask.AppendChild(newSubTitle);
+                    newSubtask.AppendChild(newSubDone);
 
                     //Add subtask element to subtask list
                     newSubList.AppendChild(newSubtask);

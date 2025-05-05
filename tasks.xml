@@ -1,3 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Tasks>
+  <Task>
+    <Title>Testing 1</Title>
+    <SubtaskList>
+      <Subtask>
+        <SubTitle>Test 1</SubTitle>
+        <SubDone>[ ]</SubDone>
+      </Subtask>
+      <Subtask>
+        <SubTitle>Test 2</SubTitle>
+        <SubDone>[x]</SubDone>
+      </Subtask>
+      <Subtask>
+        <SubTitle>Test 3</SubTitle>
+        <SubDone>[ ]</SubDone>
+      </Subtask>
+    </SubtaskList>
+  </Task>
 </Tasks>

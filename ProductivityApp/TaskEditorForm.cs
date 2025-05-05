@@ -30,7 +30,8 @@ namespace ProductivityApp
 
         private void btnAddSub_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtSubtaskTitle.Text)) {
+            if (!string.IsNullOrWhiteSpace(txtSubtaskTitle.Text))
+            {
                 var sub = new Subtask { Title = txtSubtaskTitle.Text.Trim() };
                 task.Subtasks.Add(sub);
                 txtSubtaskTitle.Clear();
